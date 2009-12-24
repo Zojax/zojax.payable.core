@@ -1,0 +1,14 @@
+<div class="topframe" i18n:domain="zojax">
+  <h1 tal:content="context/title|string:[No title]"></h1>
+  <div><span class="discreet"><a href="edit.html" i18n:translate="">Modify</a></span></div>
+  <div class="pageDescription" content="context/description"></div>
+  <br />
+
+  <tal:block i18n:translate="">Attachment link</tal:block>:
+  <strong>
+    <a target="_blank" tal:define="url 
+       string:${context/__parent__/context/@@absolute_url}/attachments/${context/__name__}"
+       tal:attributes="href url"
+       tal:content="url"></a>
+  </strong>
+</div>

@@ -1,0 +1,44 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zcml="http://namespaces.zope.org/zcml"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="zojax.payable.core">
+
+  <!-- extension view -->
+  <zojax:pagelet
+     name="index.html"
+     for="..interfaces.IBaseExtension"
+     class=".payment.Extension"
+     permission="zojax.ManageContentExtension" />
+
+<!--   payments table-->
+<!--  <adapter-->
+<!--     name="payments"-->
+<!--     for="..interfaces.IPayableExtension * *"-->
+<!--     provides="zope.contentprovider.interfaces.IContentProvider"-->
+<!--     factory=".payment.Payments" />-->
+<!---->
+<!--  <adapter factory=".payment.NameColumn" for="* * .payment.Payments" />-->
+<!---->
+<!--   payment-->
+<!--  <zojax:pagelet-->
+<!--     name="view.html"-->
+<!--     for="..interfaces.IPayment"-->
+<!--     template="paymentview.pt"-->
+<!--     permission="zojax.ManageContentExtension" />-->
+<!---->
+<!--   payments publisher-->
+<!--  <adapter-->
+<!--     name="payments"-->
+<!--     provides="zope.interface.Interface"-->
+<!--     for="..interfaces.IPayableExtension zope.publisher.interfaces.browser.IBrowserRequest"-->
+<!--     factory=".publisher.Payments" />-->
+<!---->
+<!--  <class class=".publisher.Payments">-->
+<!--    <allow-->
+<!--       attributes="__getitem__"-->
+<!--       interface="zope.publisher.interfaces.browser.IBrowserPublisher" />-->
+<!--  </class>-->
+
+</configure>

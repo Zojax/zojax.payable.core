@@ -1,0 +1,174 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   i18n_domain="zojax.payable.core">
+
+
+  <include package="zc.configuration" file="meta.zcml" />
+
+  <exclude package="getpaid.core" />
+
+
+
+  <include package=".getpaidoverrides" />
+
+  <zojax:product
+     name="zojax-payable"
+     title="Payable extension support"
+     description="Basic content types for zojax."
+     schema=".interfaces.IPayableProduct"
+     class=".product.PayableProduct"
+     configurable="true" />
+
+  <registerIn registry="zojax.product.zojax-payable">
+
+  <!-- Extension -->
+  <zojax:extension
+     name="zojax.payable.buyable"
+     schema=".interfaces.IBuyableExtension"
+     title="Buyable"
+     description="Buyable content."
+     for="zojax.content.type.interfaces.IContent"
+     class=".extension.BuyableExtension"
+     permission="zojax.ManageContentExtension">
+    <allow
+       interface=".interfaces.IBuyableExtension"
+       attributes="marker"  />
+  </zojax:extension>
+
+  <zojax:extension
+     name="zojax.payable.donatable"
+     schema=".interfaces.IDonatableExtension"
+     title="Donatable"
+     description="Donatable content."
+     for="zojax.content.type.interfaces.IContent"
+     class=".extension.DonatableExtension"
+     permission="zojax.ManageContentExtension">
+    <allow
+       interface=".interfaces.IDonatableExtension"
+       attributes="marker"  />
+  </zojax:extension>
+
+  <zojax:extension
+     name="zojax.payable.premium"
+     schema=".interfaces.IPremiumExtension"
+     title="Premium"
+     description="Premium content."
+     for="zojax.content.type.interfaces.IContent"
+     class=".extension.PremiumExtension"
+     permission="zojax.ManageContentExtension">
+    <allow
+       interface=".interfaces.IPremiumExtension"
+       attributes="marker"  />
+  </zojax:extension>
+
+  <zojax:extension
+     name="zojax.payable.shippable"
+     schema=".interfaces.IShippableExtension"
+     title="Shippable"
+     description="Shippable content."
+     for="zojax.content.type.interfaces.IContent"
+     class=".extension.ShippableExtension"
+     permission="zojax.ManageContentExtension">
+    <allow
+       interface=".interfaces.IShippableExtension"
+       attributes="marker" />
+  </zojax:extension>
+
+<!--  <adapter-->
+<!--     for=".interfaces.IPayableExtension *"-->
+<!--     factory="z3c.traverser.traverser.PluggableTraverser"-->
+<!--     provides="zope.publisher.interfaces.IPublishTraverse" />-->
+<!---->
+<!--  <subscriber-->
+<!--     for=".interfaces.IPayableExtension *"-->
+<!--     provides="z3c.traverser.interfaces.ITraverserPlugin"-->
+<!--     factory=".extension.TraverserPlugin" />-->
+
+     <zojax:content
+       title="Shopping Cart"
+       name="zojax.payable.core.cart.ShoppingCartUtility"
+       class=".cart.ShoppingCartUtility"
+       schema="getpaid.core.interfaces.IShoppingCartUtility"
+       contenttype=".interfaces.IShoppingUtilityCartType"
+       type="zojax.content.type.interfaces.IInactiveType"
+       permission="zojax.Configure" />
+
+  </registerIn>
+
+  <!-- browser views -->
+  <include package=".browser" />
+
+  <!-- generations -->
+  <utility
+     name="zojax.payable.core"
+     provides="zope.app.generations.interfaces.ISchemaManager"
+     component=".generations.schemaManager" />
+
+  <!-- Content to Payable Adapters -->
+  <adapter
+     for=".interfaces.IBuyableMarker"
+     provides="getpaid.core.interfaces.IBuyableContent"
+     factory=".content.BuyableContentAdapter"
+     />
+
+    <adapter
+     for=".interfaces.IBuyableExtension"
+     provides="getpaid.core.interfaces.IBuyableContent"
+     factory=".content.BuyableContentExtensionAdapter"
+     />
+
+  <adapter
+     for=".interfaces.IShippableMarker"
+     provides="getpaid.core.interfaces.IShippableContent"
+     factory=".content.ShippableContentAdapter"
+     />
+
+      <adapter
+     for=".interfaces.IShippableExtension"
+     provides="getpaid.core.interfaces.IShippableContent"
+     factory=".content.ShippableContentExtensionAdapter"
+     />
+
+  <adapter
+     for=".interfaces.IPremiumMarker"
+     provides="getpaid.core.interfaces.IPremiumContent"
+     factory=".content.PremiumContentAdapter"
+     />
+
+        <adapter
+     for=".interfaces.IPremiumExtension"
+     provides="getpaid.core.interfaces.IPremiumContent"
+     factory=".content.PremiumContentExtensionAdapter"
+     />
+
+  <adapter
+     for=".interfaces.IDonatableMarker"
+     provides="getpaid.core.interfaces.IDonationContent"
+     factory=".content.DonatableContentAdapter"
+    />
+
+
+   <adapter
+     for=".interfaces.IDonatableExtension"
+     provides="getpaid.core.interfaces.IDonationContent"
+     factory=".content.DonatableContentExtensionAdapter"
+     />
+
+
+  <!-- Content to Line Item Adapter -->
+  <adapter
+     for="getpaid.core.interfaces.IShoppingCart
+          .interfaces.IPayableMarker"
+     provides="getpaid.core.interfaces.ILineItemFactory"
+     factory=".content.LineItemFactory"
+     />
+
+  <adapter
+     for="getpaid.core.interfaces.IShoppingCart
+          .interfaces.IShippableMarker"
+     provides="getpaid.core.interfaces.ILineItemFactory"
+     factory=".content.ShippableItemFactory"
+     />
+
+</configure>
