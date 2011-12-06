@@ -1,4 +1,4 @@
-<div class="topframe" i18n:domain="zojax">
+<div class="topframe" i18n:domain="zojax.payable.core">
   <h1 tal:content="context/title|string:[No title]"></h1>
   <div><span class="discreet"><a href="edit.html" i18n:translate="">Modify</a></span></div>
   <div class="pageDescription" content="context/description"></div>
