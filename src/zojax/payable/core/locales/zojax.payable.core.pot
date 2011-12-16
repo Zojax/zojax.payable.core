@@ -1,0 +1,97 @@
+##############################################################################
+#
+# Copyright (c) 2003-2004 Zope Corporation and Contributors.
+# All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+##############################################################################
+msgid ""
+msgstr ""
+"Project-Id-Version: Development/Unknown\n"
+"POT-Creation-Date: Thu Dec  8 22:11:14 2011\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Zope 3 Developers <zope3-dev@zope.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: zope/app/locales/extract.py\n"
+
+#: src/zojax/payable/core/browser/payment.py:41
+msgid "Payment Form"
+msgstr ""
+
+#: src/zojax/payable/core/browser/payment.py:43
+msgid "Checkout"
+msgstr ""
+
+#: src/zojax/payable/core/browser/payment.py:53
+msgid "Payment has been done."
+msgstr ""
+
+#: src/zojax/payable/core/browser/payment.py:58
+msgid "Name"
+msgstr ""
+
+#: src/zojax/payable/core/browser/paymentview.pt:3
+msgid "Modify"
+msgstr ""
+
+#: src/zojax/payable/core/browser/paymentview.pt:7
+msgid "Attachment link"
+msgstr ""
+
+#: src/zojax/payable/core/interfaces.py:28
+msgid "Payment methods"
+msgstr ""
+
+#: src/zojax/payable/core/interfaces.py:29
+msgid "Active payment methods."
+msgstr ""
+
+#: src/zojax/payable/core/interfaces.py:32
+msgid "Payment method"
+msgstr ""
+
+#: src/zojax/payable/core/interfaces.py:40
+msgid "Title"
+msgstr ""
+
+#: src/zojax/payable/core/interfaces.py:41
+msgid "Attachment title."
+msgstr ""
+
+#: src/zojax/payable/core/interfaces.py:47
+msgid "Description"
+msgstr ""
+
+#: src/zojax/payable/core/interfaces.py:48
+msgid "Attachment description."
+msgstr ""
+
+#: src/zojax/payable/core/interfaces.py:57
+msgid "Enable"
+msgstr ""
+
+#: src/zojax/payable/core/interfaces.py:58
+msgid "Enable extension for this object."
+msgstr ""
+
+#: src/zojax/payable/core/interfaces.py:94
+msgid "Donation Level Name"
+msgstr ""
+
+#: src/zojax/payable/core/interfaces.py:95
+msgid "Amount"
+msgstr ""
+
+#: src/zojax/payable/core/interfaces.py:99
+msgid "Donation Levels"
+msgstr ""
+
