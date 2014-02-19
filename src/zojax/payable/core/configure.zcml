@@ -33,7 +33,7 @@
      description="Buyable content."
      for="zojax.content.type.interfaces.IContent"
      class=".extension.BuyableExtension"
-     permission="zojax.ManageContentExtension">
+     permission="zojax.ManagePortalExtention">
     <allow
        interface=".interfaces.IBuyableExtension"
        attributes="marker"  />
@@ -46,7 +46,7 @@
      description="Donatable content."
      for="zojax.content.type.interfaces.IContent"
      class=".extension.DonatableExtension"
-     permission="zojax.ManageContentExtension">
+     permission="zojax.ManagePortalExtention">
     <allow
        interface=".interfaces.IDonatableExtension"
        attributes="marker"  />
@@ -59,7 +59,7 @@
      description="Premium content."
      for="zojax.content.type.interfaces.IContent"
      class=".extension.PremiumExtension"
-     permission="zojax.ManageContentExtension">
+     permission="zojax.ManagePortalExtention">
     <allow
        interface=".interfaces.IPremiumExtension"
        attributes="marker"  />
@@ -72,7 +72,7 @@
      description="Shippable content."
      for="zojax.content.type.interfaces.IContent"
      class=".extension.ShippableExtension"
-     permission="zojax.ManageContentExtension">
+     permission="zojax.ManagePortalExtention">
     <allow
        interface=".interfaces.IShippableExtension"
        attributes="marker" />

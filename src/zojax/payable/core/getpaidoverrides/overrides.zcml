@@ -1,0 +1,106 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:i18n="http://namespaces.zope.org/i18n">
+
+  <!-- Per Order Log of Workflow Events -->
+  <subscriber
+     handler="getpaid.core.order.recordOrderWorkflow"
+     for="getpaid.core.interfaces.IOrder
+          ore.workflow.interfaces.IWorkflowTransitionEvent"
+     />
+
+  <!-- Fire Automatic finance state transitions -->
+  <subscriber
+     handler="getpaid.core.payment.fireAutomaticTransitions"
+     for="getpaid.core.interfaces.IOrder
+    ore.workflow.interfaces.IWorkflowTransitionEvent"
+     />
+
+  <!-- Reindex Orders on workflow changes -->
+  <subscriber
+     for="getpaid.core.interfaces.IOrder
+    ore.workflow.interfaces.IWorkflowTransitionEvent"
+     handler="getpaid.core.order.reindexOrder"
+     />
+
+  <!-- Kick off Fulfillment workflow on Orders -->
+  <subscriber
+      for="getpaid.core.interfaces.IOrder
+           zope.lifecycleevent.interfaces.IObjectCreatedEvent"
+      handler="getpaid.core.order.startOrderFulfillmentWorkflow"
+      />
+
+  <!-- Payment Processor Workflow Integration -->
+  <subscriber
+     handler="getpaid.core.payment.processorWorkflowSubscriber"
+     for="getpaid.core.interfaces.IOrder
+    ore.workflow.interfaces.IWorkflowTransitionEvent"
+     />
+
+  <adapter
+     for="getpaid.core.interfaces.IOrder
+          getpaid.core.interfaces.IDefaultFinanceWorkflow"
+     provides="getpaid.core.interfaces.IWorkflowPaymentProcessorIntegration"
+     factory="getpaid.core.payment.DefaultFinanceProcessorIntegration"
+     />
+
+  <adapter
+     for="getpaid.core.interfaces.IOrder"
+     provides="getpaid.core.interfaces.IOrderWorkflowLog"
+     factory="getpaid.core.order.OrderWorkflowLog"
+     />
+
+
+  <!-- Misc -->
+
+  <adapter
+     for="getpaid.core.interfaces.IShoppingCart"
+     provides="getpaid.core.interfaces.ILineContainerTotals"
+     factory="getpaid.core.cart.CartItemTotals"
+     />
+
+
+  <adapter
+     name="default"
+     factory="getpaid.core.router.OriginRouter"
+     />
+
+  <!-- Credit card types -->
+  <adapter
+    for="*"
+    provides="getpaid.core.interfaces.ICreditCardTypeEnumerator"
+    factory="getpaid.core.payment.CreditCardTypeEnumerator"
+    />
+
+  <utility
+      provides="zope.schema.interfaces.IVocabularyFactory"
+      component="getpaid.core.vocabularies.CreditCardTypes"
+      name="getpaid.core.credit_card_types"
+      />
+
+  <utility
+      provides="zope.schema.interfaces.IVocabularyFactory"
+      component="getpaid.core.vocabularies.AcceptedCreditCardTypes"
+      name="getpaid.core.accepted_credit_card_types"
+      />
+
+  <!-- Reports -->
+  <adapter
+   for="getpaid.core.interfaces.IStore"
+   provides="getpaid.core.interfaces.IOrderSetReport"
+   factory="getpaid.core.reports.AttributeCSVSetReport"
+   name="default-csv"
+   />
+
+  <!-- Taxes -->
+  <utility
+     provides="getpaid.core.interfaces.ITaxUtility"
+     factory="getpaid.core.tax.TaxUtility"
+     />
+
+  <!-- Shipping -->
+  <utility
+     provides="getpaid.core.interfaces.IShippingMethod"
+     factory="getpaid.core.shipping.ShippingMethod"
+     />
+
+</configure>

@@ -15,13 +15,8 @@
 
 $Id$
 """
-import os.path
-from zope import schema, interface, event
-from zope.lifecycleevent import ObjectCreatedEvent
-from zope.dublincore.interfaces import ICMFDublinCore
-from zope.app.pagetemplate import ViewPageTemplateFile
 
-from zojax.layoutform import button, Fields, PageletAddForm, PageletEditForm
+from zojax.layoutform import button, Fields, PageletAddForm
 from zojax.statusmessage.interfaces import IStatusMessage
 from zojax.extensions.browser.extension import EditExtension
 

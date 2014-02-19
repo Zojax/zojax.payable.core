@@ -10,7 +10,7 @@
      name="index.html"
      for="..interfaces.IBaseExtension"
      class=".payment.Extension"
-     permission="zojax.ManageContentExtension" />
+     permission="zojax.ManagePortalExtention" />
 
 <!--   payments table-->
 <!--  <adapter-->
@@ -26,7 +26,7 @@
 <!--     name="view.html"-->
 <!--     for="..interfaces.IPayment"-->
 <!--     template="paymentview.pt"-->
-<!--     permission="zojax.ManageContentExtension" />-->
+<!--     permission="zojax.ManagePortalExtention" />-->
 <!---->
 <!--   payments publisher-->
 <!--  <adapter-->

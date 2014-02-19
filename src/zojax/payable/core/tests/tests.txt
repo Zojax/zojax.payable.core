@@ -8,7 +8,6 @@ Event Registration
     >>> import re
 
     >>> root = getRootFolder()
-    >>> root['folder'] = Folder('Folder')
 
     >>> actor = Browser()
     >>> actor.handleErrors = False
@@ -22,35 +21,6 @@ Install product
     ...     'zojax-contenttypes', 'zojax-payable']
     >>> actor.getControl(name='install').click()
 
-Set Byable Extension
----------------------
-
-    >>> actor.open("http://localhost/folder/context.html")
-    >>> actor.getLink('Extensions').click()
-    >>> actor.getLink('Buyable').click()
-    >>> actor.getControl(name='form.widgets.enabled:list').value = ['true']
-    >>> actor.getControl('Product Code').value = 'Test Buy Code'
-    >>> actor.getControl('Price').value = '1.5'
-    >>> actor.getControl('Save').click()
-
-    >>> actor.getLink('Add to Cart').click()
-    >>> 'SubTotal' in actor.contents
-    True
-
-Set item quantity to 0 so the product is removed from the cart
-
-    >>> import sre
-    >>> regex = sre.compile("edit\..*?\.quantity")
-    >>> try:
-    ...     editName = regex.findall(actor.contents)[0]
-    ...     actor.getControl(name=editName).value = '0'
-    ...     actor.getControl('Update').click()
-    ...     'subtotal' in browser.contents
-    ... except:
-    ...     # And Just in case the regex finds nothing we fail because we
-    ...     # should have at least one
-    ...     True
-    False
 
 
 Unistall product
